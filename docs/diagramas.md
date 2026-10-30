@@ -39,11 +39,7 @@ classDiagram
             +toString()
         }
     }
-    %% Herencias de personas
-    Persona <|-- Propietario
-    Persona <|-- Veterinario
-    Persona <|--Recepcionista
-    
+   
     namespace Animales {
         class Mascota{
             <<abstract>>
@@ -69,12 +65,53 @@ classDiagram
             +emitirSonido() void
         }
     }
-    %%Herencia de animales
+    
+    namespace Servicio {
+        
+        class Facturable{
+            <<interface>>
+            +calcularCosto() double
+        }
+
+        class ConsultaGeneral{
+            -double tarifaBase
+            +ConsultaGeneral(tarifaBase : double)
+            +setTarifaBase(tarifaBase : double)  void
+        }
+        
+        class Vacunacion{
+            -double costoVacuna
+            -double costoAplicacion
+            +Vacunacion(costoVacuna : double, costoAplicacion : double)
+            +setCostoVacuna(costoVacuna : double) : void
+            +setCostoAplicacion(costoAplicacion : double) : void
+        }
+        
+        class Cirugia{
+            -int complejidad
+            -int horasQuirofano
+            +Cirugia(complejidad int, horasQuirofano : int)
+            +getHorasQuirofano() int
+            +getcomplejidad() int
+        }
+    }
+    
+    %%Herencias
+    
+    Persona <|-- Propietario
+    Persona <|-- Veterinario
+    Persona <|--Recepcionista
     Mascota <|-- Perro
     Mascota <|-- Gato
     Mascota <|-- AveExotica
+    Facturable <|-- ConsultaGeneral
+    Facturable <|-- Vacunacion
+    Facturable <|-- Cirugia
     
-    %%relacion entre propietario y mascota
+    %%relacion 
     Mascota "0..*" --o "1" Propietario : Agregacion
+    
+   
+    
     
 ```
