@@ -39,10 +39,42 @@ classDiagram
             +toString()
         }
     }
-    %% Herencias
+    %% Herencias de personas
     Persona <|-- Propietario
     Persona <|-- Veterinario
     Persona <|--Recepcionista
     
+    namespace Animales {
+        class Mascota{
+            <<abstract>>
+            -String nombre
+            -int edad
+            -float peso
+            -Propietario propietario
+            +Mascota(nombre : String, edad : int, peso : float, propietario : Propietario)
+            +emitirSonido()* void
+        }
+        class Perro{
+            -String raza
+            -int nivelEnergia+Perro(nombre : String,edad : int, peso : float, raza : String, nivelEnergia : int)
+            +emitirSonido() void
+        }    
+        class Gato{
+            -bool esDomestico
+            +Gato(nombre : String,edad : int, peso : float,esDomestico : boolean)
+            +emitirSonido() void
+        }
+        class AveExotica{
+            -float logitudAlas
+            +emitirSonido() void
+        }
+    }
+    %%Herencia de animales
+    Mascota <|-- Perro
+    Mascota <|-- Gato
+    Mascota <|-- AveExotica
+    
+    %%relacion entre propietario y mascota
+    Mascota "0..*" --o "1" Propietario : Agregacion
     
 ```
