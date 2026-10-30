@@ -25,11 +25,14 @@
 
 ## 2. Objetos de ejemplo
 
-(pendiente)
-
+| Objeto      | Clase         | Valores                                                                                                                                                                                                      |
+|-------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `capuchino` | `Gato`        | nombre = "Capuchino"<br>edad = 4<br>peso = 5.5<br>propietario = Angel Isahel(`Propietario`)<br>historialClinico = `HistorialClinico` vacío, creado por la mascota<br>esDomestico = TRUE                      |
+| `drVergara` | `Veterinario` | nombre = "Antonio"<br>apellido = "Vergara"<br>telefono = "9211112233"<br>correo = "Antonio.Vergara@pet.com"<br>cedulaProfesional = "12345678"<br>especialidad = "Medicina general"                           |
+| `cita1`     | `Cita`        | fecha = 2026-11-05<br>hora = 10:30<br>mascota = `capuchino`<br>veterinario = `drVergara`<br>consultorio = `Consultorio` número 2<br>estado = ATENDIDA<br>servicio = `ConsultaGeneral` con tarifaBase = 350.0 |
 ## 3. Clases descartadas
 
-(pendiente)
+Considero que ninguna clase de las analizadas debe ser descartada ya que todas tiene una labor fundamental para la creacion de este proyecto
 
 ## 4. Justificación de relaciones
 
