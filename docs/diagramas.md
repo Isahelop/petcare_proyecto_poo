@@ -96,6 +96,62 @@ classDiagram
         }
     }
     
+    namespace Gestion {
+        class HistorialClinico{
+            -List~Cita~ citasAtendidas
+            +HistoralClinico()
+            +agregarCita(cita : Cita) void
+            +getCitas() List citasAtendidas
+        }
+        class Clinica{
+            -String nombre
+            -List~Consultorio~ consultorios
+            -List~Veterinario~ veterinarios
+            -List~Mascota~ mascotas
+            -List~Comprobante~ comprobante
+            +Clinica(nombre : String) 
+            +agregarConsultorio()  void, 
+            +agregarVeterinario() void
+            +getVeterinario() List Veterinarios 
+            +agregarMascota(mascota : Mascotas)  void
+            +getMascota() Mascotas
+            +darBajaMascota(mascota : Mascota) void
+            +agregarComprobante(comprobante : Comprobante) void
+        }
+        class Consultorio{
+            -int numero
+            +Consultorio(numero : int)
+        }
+        class Cita{
+            -LocalDate fecha
+            -LocalTime hora
+            -Mascota mascota
+            -Veterinario veterinario
+            -consultorio Consultorio
+            -Facturable servicio
+            +Cita(fecha : LocalDate, hora : LocalTime,mascota : Mascota, veterinario : Veterinario, consultorio : Consultorio) 
+            +atenderCita(servicio : Facturable) void
+            +cancelarCita() : void
+        }
+        class Estado{
+            <<enumeration>>
+            PROGRAMADA
+            ATENDIDA
+            CANCELADA
+        }
+        class Comprobante {
+            -Cita cita
+            -double total
+            -static double totalComprobantes
+            +getTotal() double
+            +getCita() Cita
+            +calcularTotalCobrado(veterinario : Veterinario) double
+            +calcularTotalCobrado(mascota : Mascota) double
+        }
+        
+        
+    }
+    
     %%Herencias
     
     Persona <|-- Propietario
