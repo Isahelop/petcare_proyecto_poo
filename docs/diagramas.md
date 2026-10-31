@@ -166,8 +166,17 @@ classDiagram
     
     %%relacion 
     Mascota "0..*" --o "1" Propietario : Agregacion
-    
-   
-    
-    
+    Cita "0..*" --> "1" Mascota : Asociación
+    Cita "0..*" --> "1" Veterinario : Asociación
+    Cita "0..*" --> "1" Consultorio : Asociación
+    Cita "1" --> "0..1" Facturable : Asociación
+    Comprobante "1" --> "1" Cita : Asociación
+    Cita "0..*" --o "1" HistorialClinico : Agregación
+    Cita "0..*" --o "1" Clinica : Agregación
+    Propietario "0..*" --o "1" Clinica : Agregación
+    Clinica "1" --> "0..*" Comprobante : Asociación
+    Veterinario "1..*" --o "1" Clinica : Agregación
+    Consultorio "1..*" --* "1" Clinica : Composición
+    HistorialClinico "1" --* "1" Mascota : Composición
+
 ```
