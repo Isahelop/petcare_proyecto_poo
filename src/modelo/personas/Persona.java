@@ -73,7 +73,7 @@ public abstract class Persona {
         if(apellido == null || apellido.isBlank()){
             throw new IllegalArgumentException("El apellido no puede estar vacio ");
         }
-        this.nombre = apellido;
+        this.apellido = apellido;
     }
 
     /**
@@ -85,7 +85,7 @@ public abstract class Persona {
         if(telefono == null || telefono.isBlank()){
             throw new IllegalArgumentException("El telefono no puede estar vacio ");
         }
-        this.nombre = telefono;
+        this.telefono = telefono;
     }
 
     /**
@@ -102,4 +102,13 @@ public abstract class Persona {
 
     public abstract void describirFuncion();
 
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                '}';
+    }
 }
