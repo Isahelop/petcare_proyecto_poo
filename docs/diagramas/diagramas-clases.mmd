@@ -1,10 +1,7 @@
-# Diagrama de Clases UML
-
-```mermaid
 classDiagram
-    %% Paquete personas
-    namespace Personas {
-        
+%% Paquete personas
+    namespace personas {
+
         class Persona{
             <<abstract>>
             -String nombre
@@ -13,13 +10,13 @@ classDiagram
             -String correo
             +Persona(nombre : String, apellido : String, telefono : String, correo : String)
             +describirFuncion()*  void
-        }   
+        }
         class Propietario{
             -String direccion
             -List~Mascota~ mascotas
             +Propietario(nombre : String, apellido : String, telefono : String, correo : String, direccion : String )
-            +describirFuncion()void 
-            +setDireccion(direccion : String)  void 
+            +describirFuncion()void
+            +setDireccion(direccion : String)  void
             +agregarMascota(mascota : Mascota)  void
             +getMascotas() List mascotas
             +toString()
@@ -28,46 +25,50 @@ classDiagram
             -String cedulaProfesional
             -String especialidad
             +Veterinario(nombre : String, apellido : String, telefono : String, correo : String, cedulaProfesional : String, especialidad : String)
-            +describirFuncion() : void  
+            +describirFuncion() : void
             +toString()
         }
         class Recepcionista{
             -String turno
-            +Recepcionista(nombre : String, apellido : String, telefono : String, correo : String, turno : String) 
-            +describirFuncion() void 
-            +setTurno(turno : String)  void 
+            +Recepcionista(nombre : String, apellido : String, telefono : String, correo : String, turno : String)
+            +describirFuncion() void
+            +setTurno(turno : String)  void
             +toString()
         }
     }
-   
-    namespace Animales {
+
+    namespace mascotas {
         class Mascota{
             <<abstract>>
             -String nombre
             -int edad
             -float peso
             -Propietario propietario
+            -HistorialCLinico historialClinico
             +Mascota(nombre : String, edad : int, peso : float, propietario : Propietario)
+            +getHistorialClinico() HistorialCLinico
             +emitirSonido()* void
         }
         class Perro{
             -String raza
-            -int nivelEnergia+Perro(nombre : String,edad : int, peso : float, raza : String, nivelEnergia : int)
+            -int nivelEnergia
+            +Perro(nombre : String,edad : int, peso : float, propietario : Propietario, raza : String, nivelEnergia : int)
             +emitirSonido() void
-        }    
+        }
         class Gato{
-            -bool esDomestico
-            +Gato(nombre : String,edad : int, peso : float,esDomestico : boolean)
+            -boolean esDomestico
+            +Gato(nombre : String,edad : int, peso : float, propietario : Propietario, esDomestico : boolean)
             +emitirSonido() void
         }
         class AveExotica{
-            -float logitudAlas
+            -float longitudAlas
+            +AveExotica(nombre : String,edad : int, peso : float, propietario : Propietario,longitudAlas : float)
             +emitirSonido() void
         }
     }
-    
-    namespace Servicio {
-        
+
+    namespace servicios {
+
         class Facturable{
             <<interface>>
             +calcularCosto() double
@@ -77,29 +78,32 @@ classDiagram
             -double tarifaBase
             +ConsultaGeneral(tarifaBase : double)
             +setTarifaBase(tarifaBase : double)  void
+            +calcularCosto() double
         }
-        
+
         class Vacunacion{
             -double costoVacuna
             -double costoAplicacion
             +Vacunacion(costoVacuna : double, costoAplicacion : double)
             +setCostoVacuna(costoVacuna : double) : void
             +setCostoAplicacion(costoAplicacion : double) : void
+            +calcularCosto() double
         }
-        
+
         class Cirugia{
             -int complejidad
             -int horasQuirofano
-            +Cirugia(complejidad int, horasQuirofano : int)
+            +Cirugia(complejidad : int, horasQuirofano : int)
             +getHorasQuirofano() int
             +getcomplejidad() int
+            +calcularCosto() double
         }
     }
-    
-    namespace Gestion {
+
+    namespace clinica {
         class HistorialClinico{
             -List~Cita~ citasAtendidas
-            +HistoralClinico()
+            +HistorialClinico()
             +agregarCita(cita : Cita) void
             +getCitas() List citasAtendidas
         }
@@ -107,15 +111,12 @@ classDiagram
             -String nombre
             -List~Consultorio~ consultorios
             -List~Veterinario~ veterinarios
-            -List~Mascota~ mascotas
-            -List~Comprobante~ comprobante
-            +Clinica(nombre : String) 
-            +agregarConsultorio()  void, 
-            +agregarVeterinario() void
-            +getVeterinario() List Veterinarios 
-            +agregarMascota(mascota : Mascotas)  void
-            +getMascota() Mascotas
-            +darBajaMascota(mascota : Mascota) void
+            -List~Propietario~ propietarios
+            -List~Comprobante~ comprobantes
+            +Clinica(nombre : String)
+            +agregarConsultorio(numero : int)  void
+            +agregarVeterinario(veterinario : Veterinario) void
+            +getVeterinario() List Veterinarios
             +agregarComprobante(comprobante : Comprobante) void
         }
         class Consultorio{
@@ -128,8 +129,9 @@ classDiagram
             -Mascota mascota
             -Veterinario veterinario
             -consultorio Consultorio
+            -estado Estado
             -Facturable servicio
-            +Cita(fecha : LocalDate, hora : LocalTime,mascota : Mascota, veterinario : Veterinario, consultorio : Consultorio) 
+            +Cita(fecha : LocalDate, hora : LocalTime,mascota : Mascota, veterinario : Veterinario, consultorio : Consultorio)
             +atenderCita(servicio : Facturable) void
             +cancelarCita() : void
         }
@@ -141,42 +143,55 @@ classDiagram
         }
         class Comprobante {
             -Cita cita
-            -double total
-            -static double totalComprobantes
-            +getTotal() double
+            -int total
+            int$ totalComprobantes
+            +Comprobante(cita : Cita)
+            +getTotalComprobante() int$
             +getCita() Cita
-            +calcularTotalCobrado(veterinario : Veterinario) double
-            +calcularTotalCobrado(mascota : Mascota) double
+
         }
-        
-        
+
+
     }
-    
-    %%Herencias
-    
+    namespace app {
+        class Main{
+            +main(args : String[]) void
+        }
+
+    }
+
+%%Herencias
+
     Persona <|-- Propietario
     Persona <|-- Veterinario
     Persona <|--Recepcionista
     Mascota <|-- Perro
     Mascota <|-- Gato
     Mascota <|-- AveExotica
-    Facturable <|-- ConsultaGeneral
-    Facturable <|-- Vacunacion
-    Facturable <|-- Cirugia
-    
-    %%relacion 
-    Mascota "0..*" --o "1" Propietario : Agregacion
+    Facturable <|.. ConsultaGeneral
+    Facturable <|.. Vacunacion
+    Facturable <|.. Cirugia
+
+%%relacion
+
+%%Asosiaciones
     Cita "0..*" --> "1" Mascota : Asociación
     Cita "0..*" --> "1" Veterinario : Asociación
     Cita "0..*" --> "1" Consultorio : Asociación
     Cita "1" --> "0..1" Facturable : Asociación
+    Cita --> Estado : Estado
     Comprobante "1" --> "1" Cita : Asociación
+    Clinica "1" --> "0..*" Comprobante : Asociación
+
+%%Agregaciones
     Cita "0..*" --o "1" HistorialClinico : Agregación
     Cita "0..*" --o "1" Clinica : Agregación
     Propietario "0..*" --o "1" Clinica : Agregación
-    Clinica "1" --> "0..*" Comprobante : Asociación
     Veterinario "1..*" --o "1" Clinica : Agregación
+    Mascota "0..*" --o "1" Propietario : Agregacion
+
+%%Composiciones
     Consultorio "1..*" --* "1" Clinica : Composición
     HistorialClinico "1" --* "1" Mascota : Composición
 
-```
+    Main ..> Clinica : Usa
