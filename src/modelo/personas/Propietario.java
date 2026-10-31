@@ -3,6 +3,7 @@ package modelo.personas;
 import modelo.mascotas.Mascota;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Propietario extends Persona {
@@ -19,6 +20,7 @@ public class Propietario extends Persona {
      */
     public Propietario(String nombre, String apellido, String telefono, String correo, String direccion) {
         super(nombre, apellido, telefono, correo);
+        setDireccion(direccion);
     }
 
     /**
@@ -56,7 +58,7 @@ public class Propietario extends Persona {
      * @return la lista de las mascotas del propietario
      */
     public List<Mascota> getMascotas() {
-        return mascotas;
+        return Collections.unmodifiableList(mascotas);
     }
 
     @Override
@@ -68,7 +70,6 @@ public class Propietario extends Persona {
     public String toString() {
         return "Propietario{" +
                 "direccion='" + direccion + '\'' +
-                ", mascotas=" + mascotas +
                 "} " + super.toString();
     }
 }

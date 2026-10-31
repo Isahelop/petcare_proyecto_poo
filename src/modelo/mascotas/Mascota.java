@@ -98,7 +98,7 @@ public abstract class Mascota {
                 "nombre='" + nombre + '\'' +
                 ", edad=" + edad +
                 ", peso=" + peso +
-                ", propietario=" + propietario +
+                ", propietario=" + propietario.getNombre()+
                 '}';
     }
 
