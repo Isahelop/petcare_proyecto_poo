@@ -9,6 +9,14 @@ classDiagram
             -String telefono
             -String correo
             +Persona(nombre : String, apellido : String, telefono : String, correo : String)
+            +getNombre() String
+            +getApellido() String
+            +getTelefono() String
+            +getCorreo() String
+            +setNombre(nombre : String) void
+            +setApellido(apellido : String) void
+            +setTelefono(telefono : String) void
+            +setCorreo(correo : String) void
             +describirFuncion()*  void
         }
         class Propietario{
