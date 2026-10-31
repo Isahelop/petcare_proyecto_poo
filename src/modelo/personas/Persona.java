@@ -7,13 +7,14 @@ public abstract class Persona {
     private String correo;
 
     /**
+     * Metodo constructor
      *
-     * @param nombre
-     * @param apellido
-     * @param telefono
-     * @param correo
+     * @param nombre   de la persona
+     * @param apellido de la persona
+     * @param telefono de la persona
+     * @param correo   de la persona
      */
-    public Persona(String nombre, String apellido, String telefono, String correo){
+    public Persona(String nombre, String apellido, String telefono, String correo) {
         setNombre(nombre);
         setApellido(apellido);
         setTelefono(telefono);
@@ -21,6 +22,7 @@ public abstract class Persona {
     }
 
     /**
+     * Metodo permite acceder  al nombre de la persona
      *
      * @return el nombre de la persona
      */
@@ -37,6 +39,7 @@ public abstract class Persona {
     }
 
     /**
+     * Metodo permite acceder  al telefono de la persona
      *
      * @return el telefono de la persona
      */
@@ -45,6 +48,7 @@ public abstract class Persona {
     }
 
     /**
+     * Metodo permite acceder  al correo de la persona
      *
      * @return el correo de la persona
      */
@@ -53,48 +57,52 @@ public abstract class Persona {
     }
 
     /**
+     * Metodo para agregar nombre a una persona
      *
-     * @param nombre
+     * @param nombre de la persona
      * @throws IllegalArgumentException si el nombre esta vacio
      */
     public void setNombre(String nombre) {
-        if(nombre == null || nombre.isBlank()){
-            throw new IllegalArgumentException("El nombre no puede estar vacio ");
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacio");
         }
         this.nombre = nombre;
     }
 
     /**
+     * Metodo para agregar un apellido a una persona
      *
-     * @param apellido
+     * @param apellido de la persona
      * @throws IllegalArgumentException si el apellido esta vacio
      */
     public void setApellido(String apellido) {
-        if(apellido == null || apellido.isBlank()){
-            throw new IllegalArgumentException("El apellido no puede estar vacio ");
+        if (apellido == null || apellido.isBlank()) {
+            throw new IllegalArgumentException("El apellido no puede estar vacio");
         }
         this.apellido = apellido;
     }
 
     /**
+     * Metodo para agregar un telefono a la persona
      *
-     * @param telefono
+     * @param telefono de la persona
      * @throws IllegalArgumentException si el telefono esta vacio
      */
     public void setTelefono(String telefono) {
-        if(telefono == null || telefono.isBlank()){
-            throw new IllegalArgumentException("El telefono no puede estar vacio ");
+        if (telefono == null || telefono.isBlank()) {
+            throw new IllegalArgumentException("El telefono no puede estar vacio");
         }
         this.telefono = telefono;
     }
 
     /**
+     * Metodo para agregar un correo a la persona
      *
-     * @param correo
+     * @param correo de la persona
      * @throws IllegalArgumentException si el correo esta vacio
      */
     public void setCorreo(String correo) {
-        if(correo == null || correo.isBlank()){
+        if (correo == null || correo.isBlank()) {
             throw new IllegalArgumentException("El correo no puede estar vacio");
         }
         this.correo = correo;
