@@ -9,6 +9,15 @@ classDiagram
             -String telefono
             -String correo
             +Persona(nombre : String, apellido : String, telefono : String, correo : String)
+            +getNombre() String
+            +getApellido() String
+            +getTelefono() String
+            +getCorreo() String
+            +setNombre(nombre : String) void
+            +setApellido(apellido : String) void
+            +setTelefono(telefono : String) void
+            +setCorreo(correo : String) void
+            +toString() String
             +describirFuncion()*  void
         }
         class Propietario{
@@ -25,15 +34,16 @@ classDiagram
             -String cedulaProfesional
             -String especialidad
             +Veterinario(nombre : String, apellido : String, telefono : String, correo : String, cedulaProfesional : String, especialidad : String)
-            +describirFuncion() : void
-            +toString()
+            +describirFuncion() void
+            +getCedulaProfesional() String
+            +toString() String
         }
         class Recepcionista{
             -String turno
             +Recepcionista(nombre : String, apellido : String, telefono : String, correo : String, turno : String)
             +describirFuncion() void
             +setTurno(turno : String)  void
-            +toString()
+            +toString() String
         }
     }
 
@@ -144,7 +154,7 @@ classDiagram
         class Comprobante {
             -Cita cita
             -int total
-            int$ totalComprobantes
+            int totalComprobantes$
             +Comprobante(cita : Cita)
             +getTotalComprobante() int$
             +getCita() Cita
