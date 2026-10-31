@@ -29,4 +29,7 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-/petcare_Poo.iml
+*.iml
+
+.idea/
+out/.
