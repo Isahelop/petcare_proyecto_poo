@@ -17,7 +17,7 @@ public class Propietario extends Persona {
      * @param correo    correo del propietario
      * @param direccion dirección del propietario
      */
-    Propietario(String nombre, String apellido, String telefono, String correo, String direccion) {
+    public Propietario(String nombre, String apellido, String telefono, String correo, String direccion) {
         super(nombre, apellido, telefono, correo);
     }
 
@@ -38,8 +38,15 @@ public class Propietario extends Persona {
      * Metodo para agregar una mascota al propietario
      *
      * @param mascota del propietario
+     * @throws IllegalArgumentException si la mascota y si el propietario es diferente
      */
     public void agregarMascota(Mascota mascota) {
+        if(mascota == null){
+            throw new IllegalArgumentException("La mascota no puede estar vacia");
+        }
+        if(mascota.getPropietario() != this){
+            throw new IllegalArgumentException("La mascota pertenece a otro propietario");
+        }
         mascotas.add(mascota);
     }
 

@@ -34,10 +34,11 @@ public abstract class Mascota {
      * Metodo para agregar la de edad a una mascota
      *
      * @param edad de la mascota
+     * @throws IllegalArgumentException si la edad es 0 o negativo
      */
     public void setEdad(int edad) {
         if (edad <= 0) {
-            throw new IllegalArgumentException("La edad no puede ser 0 o negativa");
+            throw new IllegalArgumentException("La edad no puede ser 0 o negativo");
         }
         this.edad = edad;
     }
@@ -46,6 +47,7 @@ public abstract class Mascota {
      * Metodo para agregar el peso a una mascota
      *
      * @param peso de la mascota
+     * @throws IllegalArgumentException si el peso es 0 o negativo
      */
     public void setPeso(float peso) {
         if (peso <= 0) {
@@ -54,5 +56,54 @@ public abstract class Mascota {
         this.peso = peso;
     }
 
-    public abstract void EmitirSonido();
+    /**
+     * Metodo para ver el nombre de la mascota
+     *
+     * @return nombre de la mascota
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Metodo para ver la edad de la mascota
+     *
+     * @return edad de la mascota
+     */
+    public int getEdad() {
+        return edad;
+    }
+
+    /**
+     * Metodo para ver el peso de la mascota
+     *
+     * @return peso de la mascota
+     */
+    public float getPeso() {
+        return peso;
+    }
+
+    /**
+     * Metodo para ver el propietario de la mascota
+     *
+     * @return propietario de la mascota
+     */
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    @Override
+    public String toString() {
+        return "Mascota{" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", propietario=" + propietario +
+                '}';
+    }
+
+    /**
+     * Metodo que contiene el sonido de la mascota
+     */
+    public abstract void emitirSonido();
 }

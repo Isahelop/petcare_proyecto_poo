@@ -30,7 +30,7 @@ public class Perro extends Mascota {
      * Metodo para agregar nivel de energia a un perro
      *
      * @param nivelEnergia del perro
-     * @throws IllegalArgumentException si el nivel de energia esta vacio
+     * @throws IllegalArgumentException si el nivel de energia es menor a 0
      */
     public void setNivelEnergia(int nivelEnergia) {
         if (nivelEnergia < 0) {
@@ -39,8 +39,34 @@ public class Perro extends Mascota {
         this.nivelEnergia = nivelEnergia;
     }
 
+    /**
+     * Metodo para ver la raza del perro
+     *
+     * @return raza del perro
+     */
+    public String getRaza() {
+        return raza;
+    }
+
+    /**
+     * Metodo para ver el nivel de energia del perro
+     *
+     * @return nivel de energia del perro
+     */
+    public int getNivelEnergia() {
+        return nivelEnergia;
+    }
+
     @Override
-    public void EmitirSonido() {
-        System.out.println("Sonido: Guaaaao");
+    public String toString() {
+        return "Perro{" +
+                "raza='" + raza + '\'' +
+                ", nivelEnergia=" + nivelEnergia +
+                "} " + super.toString();
+    }
+
+    @Override
+    public void emitirSonido() {
+        System.out.println(getNombre() + "Sonido : Guaaoo");
     }
 }
