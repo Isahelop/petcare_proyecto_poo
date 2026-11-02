@@ -1,5 +1,6 @@
 package modelo.mascotas;
 
+import modelo.clinica.HistorialClinico;
 import modelo.personas.Propietario;
 
 public abstract class Mascota {
@@ -7,6 +8,7 @@ public abstract class Mascota {
     private int edad;
     private float peso;
     private final Propietario propietario;
+    private HistorialClinico historialClinico;
 
     /**
      * Metodo constructor de la mascota
@@ -28,6 +30,8 @@ public abstract class Mascota {
             throw new IllegalArgumentException("El propietario no puede estar vacio");
         }
         this.propietario = propietario;
+        // Composicion con la clase de HistorialClinico
+        new HistorialClinico();
     }
 
     /**
@@ -90,6 +94,14 @@ public abstract class Mascota {
      */
     public Propietario getPropietario() {
         return propietario;
+    }
+
+    /**
+     * Metodo para ver el historial clinico de la mascota
+     * @return historial de las citas atendidas de la mascota
+     */
+    public HistorialClinico getHistorialClinico() {
+        return historialClinico;
     }
 
     @Override
