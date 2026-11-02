@@ -1,27 +1,31 @@
 package modelo.servicios;
 
 public class Cirugia implements Facturable {
-    private static final double costoBase = 500;
+    private static final double COSTO_BASE = 500;
+    private static final int COMPLEJIDAD_MINIMA = 1;
+    private static final int COMPLEJIDAD_MAXIMA = 10;
     private int complejidad;
     private double horasQuirofano;
 
     /**
      * Metodo constructor para cirugia
-     * @param complejidad de la cirugia
+     *
+     * @param complejidad    de la cirugia
      * @param horasQuirofano de la cirugia
      */
-    public Cirugia(int complejidad, double horasQuirofano){
+    public Cirugia(int complejidad, double horasQuirofano) {
         setComplejidad(complejidad);
         setHorasQuirofano(horasQuirofano);
     }
 
     /**
      * Metodo para agregar complejidad a una cirugia
+     *
      * @param complejidad de la cirugia
      * @throws IllegalArgumentException si la complejidad es menor o igual a 0 y mayor a 10
      */
     public void setComplejidad(int complejidad) {
-        if(complejidad <= 0 && complejidad > 10){
+        if (complejidad <= COMPLEJIDAD_MINIMA || complejidad > COMPLEJIDAD_MAXIMA) {
             throw new IllegalArgumentException("La complejidad no puede ser 0 o negativo y mayor de 10");
         }
         this.complejidad = complejidad;
@@ -29,11 +33,12 @@ public class Cirugia implements Facturable {
 
     /**
      * Metodo para agregar las horas de quirofano de una cirugia
+     *
      * @param horasQuirofano de la cirugia
      * @throws IllegalArgumentException si las horas son menor o igual a 0
      */
     public void setHorasQuirofano(double horasQuirofano) {
-        if(horasQuirofano <= 0 ){
+        if (horasQuirofano <= 0) {
             throw new IllegalArgumentException("Las horas no pueden ser 0 o negativo");
         }
         this.horasQuirofano = horasQuirofano;
@@ -41,14 +46,16 @@ public class Cirugia implements Facturable {
 
     /**
      * Metodo para ver el costo base de la cirugia
+     *
      * @return costo base asignado de la cirugia
      */
     public static double getCostoBase() {
-        return costoBase;
+        return COSTO_BASE;
     }
 
     /**
      * Metodo para ver la complejidad de la cirugia
+     *
      * @return complejidad de la cirugia
      */
     public int getComplejidad() {
@@ -57,6 +64,7 @@ public class Cirugia implements Facturable {
 
     /**
      * Metodo para ver las horas de quirofano de la cirugia
+     *
      * @return horas de quirofano de la cirugia
      */
     public double getHorasQuirofano() {
@@ -64,7 +72,18 @@ public class Cirugia implements Facturable {
     }
 
     @Override
+    public String toString() {
+        return "Cirugia{" +
+                "complejidad=" + complejidad +
+                ", horasQuirofano=" + horasQuirofano +
+                '}';
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public double calcularCosto() {
-        return costoBase * complejidad * horasQuirofano;
+        return COSTO_BASE * complejidad * horasQuirofano;
     }
 }
