@@ -53,6 +53,16 @@ public class Propietario extends Persona {
     }
 
     /**
+     * Metodo que elimina una mascota de la lista del propietario.
+     * @param mascota a dar de baja.
+     */
+    public void eliminarMascota(Mascota mascota) {
+        if (mascota != null) {
+            mascotas.remove(mascota);
+        }
+    }
+
+    /**
      * Metodo para ver las mascotas que tiene el propietario
      *
      * @return la lista de las mascotas del propietario
