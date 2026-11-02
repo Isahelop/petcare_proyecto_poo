@@ -7,8 +7,8 @@ public class Vacunacion implements Facturable {
     /**
      * Metodo constructor de vacunacion
      *
-     * @param costoVacuna
-     * @param costoAplicacion
+     * @param costoVacuna     de la vacuna
+     * @param costoAplicacion de la vacuna
      */
     public Vacunacion(double costoVacuna, double costoAplicacion) {
         setCostoVacuna(costoVacuna);
@@ -18,7 +18,7 @@ public class Vacunacion implements Facturable {
     /**
      * Metodo para agregar costo de vacuna
      *
-     * @param costoVacuna
+     * @param costoVacuna de la vacuna
      * @throws IllegalArgumentException si el costo de la vacuna es 0 o negativo
      */
     public void setCostoVacuna(double costoVacuna) {
@@ -31,14 +31,22 @@ public class Vacunacion implements Facturable {
     /**
      * Metodo para agregar costo de aplicacion de la vacuna
      *
-     * @param costoAplicacion
+     * @param costoAplicacion de la vacuna
      * @throws IllegalArgumentException si es costo de aplicacion es negativo
      */
     public void setCostoAplicacion(double costoAplicacion) {
-        if (costoAplicacion <= 0) {
+        if (costoAplicacion < 0) {
             throw new IllegalArgumentException("El costo de aplicacion no puede ser negativo ");
         }
         this.costoAplicacion = costoAplicacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Vacunacion{" +
+                "costoVacuna=" + costoVacuna +
+                ", costoAplicacion=" + costoAplicacion +
+                '}';
     }
 
     @Override
