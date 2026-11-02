@@ -169,11 +169,14 @@ public class Cita {
      * @throws IllegalArgumentException si la cita esta cancelada o si el servicio esta vacio
      */
     public void atenderCita(Facturable servicio) {
+        if (servicio == null) {
+            throw new IllegalArgumentException("El servicio no puede estar vacio");
+        }
         if (this.estado == Estado.CANCELADA) {
             throw new IllegalArgumentException("No se atiende a una cita cancelada");
         }
-        if (servicio == null) {
-            throw new IllegalArgumentException("El servicio no puede estar vacio");
+        if (this.estado == Estado.ATENDIDA){
+            throw new IllegalArgumentException("La cita ya fue atendida");
         }
         this.servicio = servicio;
         this.estado = Estado.ATENDIDA;
