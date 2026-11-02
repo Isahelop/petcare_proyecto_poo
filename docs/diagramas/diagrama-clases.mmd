@@ -1,207 +1,219 @@
 classDiagram
-%% Paquete personas
-    namespace personas {
 
-        class Persona{
+    namespace personas {
+        class Persona {
             <<abstract>>
             -String nombre
             -String apellido
             -String telefono
             -String correo
             +Persona(nombre : String, apellido : String, telefono : String, correo : String)
-            +getNombre() String
-            +getApellido() String
             +getTelefono() String
-            +getCorreo() String
-            +setNombre(nombre : String) void
-            +setApellido(apellido : String) void
-            +setTelefono(telefono : String) void
-            +setCorreo(correo : String) void
-            +toString() String
-            +describirFuncion()*  void
+            +describirFuncion()* void
         }
-        class Propietario{
+
+        class Propietario {
             -String direccion
             -List~Mascota~ mascotas
-            +Propietario(nombre : String, apellido : String, telefono : String, correo : String, direccion : String )
-            +describirFuncion()void
-            +setDireccion(direccion : String)  void
-            +agregarMascota(mascota : Mascota)  void
-            +getMascotas() List mascotas
-            +toString()
-        }
-        class Veterinario{
-            -String cedulaProfesional
-            -String especialidad
-            +Veterinario(nombre : String, apellido : String, telefono : String, correo : String, cedulaProfesional : String, especialidad : String)
+            +Propietario(direccion : String)
             +describirFuncion() void
-            +getCedulaProfesional() String
+            +setDireccion(direccion : String) void
+            +agregarMascota(mascota : Mascota) void
+            +eliminarMascota(mascota : Mascota) void
+            +getMascotas() List~Mascota~
             +toString() String
         }
-        class Recepcionista{
-            -String turno
-            +Recepcionista(nombre : String, apellido : String, telefono : String, correo : String, turno : String)
+
+        class Veterinario {
+            -String cedulaProfesional
+            -String especialidad
+            +Veterinario(cedulaProfesional : String, especialidad : String)
+            +getCedulaProfesional() String
             +describirFuncion() void
-            +setTurno(turno : String)  void
+            +toString() String
+        }
+
+        class Recepcionista {
+            -String turno
+            +Recepcionista(turno : String)
+            +describirFuncion() void
+            +setTurno(turno : String) void
             +toString() String
         }
     }
 
     namespace mascotas {
-        class Mascota{
+        class Mascota {
             <<abstract>>
             -String nombre
             -int edad
             -float peso
             -Propietario propietario
-            -HistorialCLinico historialClinico
+            -HistorialClinico historialClinico
             +Mascota(nombre : String, edad : int, peso : float, propietario : Propietario)
-            +getHistorialClinico() HistorialCLinico
+            +getNombre() String
+            +getPropietario() Propietario
+            +getHistorialClinico() HistorialClinico
             +emitirSonido()* void
         }
-        class Perro{
+
+        class Perro {
             -String raza
             -int nivelEnergia
-            +Perro(nombre : String,edad : int, peso : float, propietario : Propietario, raza : String, nivelEnergia : int)
+            +Perro(nombre : String, edad : int, peso : float, raza : String, nivelEnergia : int)
             +emitirSonido() void
         }
-        class Gato{
+
+        class Gato {
             -boolean esDomestico
-            +Gato(nombre : String,edad : int, peso : float, propietario : Propietario, esDomestico : boolean)
+            +Gato(nombre : String, edad : int, peso : float, esDomestico : boolean)
             +emitirSonido() void
         }
-        class AveExotica{
+
+        class AveExotica {
             -float longitudAlas
-            +AveExotica(nombre : String,edad : int, peso : float, propietario : Propietario,longitudAlas : float)
+            +AveExotica(nombre : String, edad : int, peso : float, longitudAlas : float)
             +emitirSonido() void
         }
     }
 
     namespace servicios {
-
-        class Facturable{
+        class Facturable {
             <<interface>>
             +calcularCosto() double
         }
 
-        class ConsultaGeneral{
+        class ConsultaGeneral {
             -double tarifaBase
             +ConsultaGeneral(tarifaBase : double)
-            +setTarifaBase(tarifaBase : double)  void
-            +calcularCosto() double
+            +setTarifaBase(tarifaBase : double) void
         }
 
-        class Vacunacion{
+        class Vacunacion {
             -double costoVacuna
             -double costoAplicacion
-            +Vacunacion(costoVacuna : double, costoAplicacion : double)
-            +setCostoVacuna(costoVacuna : double) : void
-            +setCostoAplicacion(costoAplicacion : double) : void
-            +calcularCosto() double
+            +Vacunacion(costoVacuna : double)
+            +setCostoVacuna(costoVacuna : double) void
         }
 
-        class Cirugia{
-            -int complejidad
+        class Cirugia {
+            -String complejidad
             -int horasQuirofano
-            +Cirugia(complejidad : int, horasQuirofano : int)
-            +getHorasQuirofano() int
-            +getcomplejidad() int
-            +calcularCosto() double
+            +Cirugia(complejidad : String, horasQuirofano : int)
         }
     }
 
     namespace clinica {
-        class HistorialClinico{
-            -List~Cita~ citasAtendidas
-            +HistorialClinico()
-            +agregarCita(cita : Cita) void
-            +getCitas() List citasAtendidas
-        }
-        class Clinica{
-            -String nombre
-            -List~Consultorio~ consultorios
-            -List~Veterinario~ veterinarios
-            -List~Propietario~ propietarios
-            -List~Comprobante~ comprobantes
-            +Clinica(nombre : String)
-            +agregarConsultorio(numero : int)  void
-            +agregarVeterinario(veterinario : Veterinario) void
-            +getVeterinario() List Veterinarios
-            +agregarComprobante(comprobante : Comprobante) void
-        }
-        class Consultorio{
-            -int numero
-            +Consultorio(numero : int)
-        }
-        class Cita{
-            -LocalDate fecha
-            -LocalTime hora
-            -Mascota mascota
-            -Veterinario veterinario
-            -consultorio Consultorio
-            -estado Estado
-            -Facturable servicio
-            +Cita(fecha : LocalDate, hora : LocalTime,mascota : Mascota, veterinario : Veterinario, consultorio : Consultorio)
-            +atenderCita(servicio : Facturable) void
-            +cancelarCita() : void
-        }
-        class Estado{
+        class Estado {
             <<enumeration>>
             PROGRAMADA
             ATENDIDA
             CANCELADA
         }
+
+        class HistorialClinico {
+            -List~Cita~ citasAtendidas
+            +HistorialClinico()
+            +agregarCita(cita : Cita) void
+            +getCitas() List~Cita~
+        }
+
+        class Clinica {
+            -String nombre
+            -List~Consultorio~ consultorios
+            -List~Veterinario~ veterinarios
+            -List~Propietario~ propietarios
+            -List~Comprobante~ comprobantes
+            -List~Cita~ citas
+            +Clinica(nombre : String)
+            +getNombre() String
+            +agregarConsultorio(numero : int) void
+            +agregarVeterinario(veterinario : Veterinario) void
+            +agregarPropietario(propietario : Propietario) void
+            +agendarCita(cita : Cita) void
+            +atenderCita(cita : Cita, servicio : Facturable) void
+            +agregarComprobante(comprobante : Comprobante) void
+            +calcularTotalCobrado(veterinario : Veterinario) double
+            +calcularTotalCobrado(mascota : Mascota) double
+            +obtenerMascotas() List~Mascota~
+            +darBajaMascota(mascota : Mascota) void
+            +buscarConsultorio(numero : int) Consultorio
+            +buscarVeterinario(cedula : String) Veterinario
+            +buscarMascota(nombre : String) Mascota
+            +buscarPropietario(telefono : String) Propietario
+            +obtenerVeterinarios() List~Veterinario~
+            +obtenerPropietarios() List~Propietario~
+            +obtenerCitas() List~Cita~
+            -mismoVeterinario(a : Veterinario, b : Veterinario) boolean
+            -veterinarioOcupado(veterinario : Veterinario, fecha : LocalDate, hora : LocalTime) boolean
+            -consultorioOcupado(consultorio : Consultorio, fecha : LocalDate, hora : LocalTime) boolean
+            -sumarCostosServicios(servicios : List~Facturable~) double
+        }
+
+        class Consultorio {
+            -int numero
+            +Consultorio(numero : int)
+            +getNumero() int
+        }
+
+        class Cita {
+            -LocalDate fecha
+            -LocalTime hora
+            -Mascota mascota
+            -Veterinario veterinario
+            -Consultorio consultorio
+            -Estado estado
+            -Facturable servicio
+            +Cita(fecha : LocalDate, hora : LocalTime, mascota : Mascota, veterinario : Veterinario, consultorio : Consultorio)
+            +setFecha(fecha : LocalDate) void
+            +setHora(hora : LocalTime) void
+            +setMascota(mascota : Mascota) void
+            +setVeterinario(veterinario : Veterinario) void
+            +setConsultorio(consultorio : Consultorio) void
+            +atenderCita(servicio : Facturable) void
+            +cancelarCita() void
+            +getFecha() LocalDate
+            +getHora() LocalTime
+            +getMascota() Mascota
+            +getVeterinario() Veterinario
+            +getConsultorio() Consultorio
+            +getEstado() Estado
+            +getServicio() Facturable
+        }
+
         class Comprobante {
             -Cita cita
-            -int total
-            int totalComprobantes$
-            +Comprobante(cita : Cita)
-            +getTotalComprobante() int$
+            -double total
+            -static double totalComprobantes
+            +getTotal() double
             +getCita() Cita
-
         }
-
-
-    }
-    namespace app {
-        class Main{
-            +main(args : String[]) void
-        }
-
     }
 
-%%Herencias
-
+%% Herencia
     Persona <|-- Propietario
     Persona <|-- Veterinario
-    Persona <|--Recepcionista
+    Persona <|-- Recepcionista
+
     Mascota <|-- Perro
     Mascota <|-- Gato
     Mascota <|-- AveExotica
+
     Facturable <|.. ConsultaGeneral
     Facturable <|.. Vacunacion
     Facturable <|.. Cirugia
 
-%%relacion
-
-%%Asosiaciones
+%% Relaciones
+    Mascota "0..*" --o "1" Propietario : Agregación
     Cita "0..*" --> "1" Mascota : Asociación
     Cita "0..*" --> "1" Veterinario : Asociación
     Cita "0..*" --> "1" Consultorio : Asociación
     Cita "1" --> "0..1" Facturable : Asociación
-    Cita --> Estado : Estado
     Comprobante "1" --> "1" Cita : Asociación
-    Clinica "1" --> "0..*" Comprobante : Asociación
-
-%%Agregaciones
     Cita "0..*" --o "1" HistorialClinico : Agregación
     Cita "0..*" --o "1" Clinica : Agregación
     Propietario "0..*" --o "1" Clinica : Agregación
+    Clinica "1" --> "0..*" Comprobante : Asociación
     Veterinario "1..*" --o "1" Clinica : Agregación
-    Mascota "0..*" --o "1" Propietario : Agregacion
-
-%%Composiciones
     Consultorio "1..*" --* "1" Clinica : Composición
     HistorialClinico "1" --* "1" Mascota : Composición
-
-    Main ..> Clinica : Usa
