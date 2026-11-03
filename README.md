@@ -147,27 +147,27 @@ src/
 ### Ejemplo de uso
 1. Registrar dos dueños y tres mascotas (un perro, un gato y un ave).
 
-![Diagrama de clases de PetCare](docs/capturas/captura 1.png)
+![Diagrama de clases de PetCare](docs/capturas/captura_1.png)
 
 2. Registrar dos veterinarios.
 
-   ![Diagrama de clases de PetCare](docs/capturas/captura 2.png)
+   ![Diagrama de clases de PetCare](docs/capturas/captura_2.png)
 
 3. Agendar tres citas y atender dos, de modo que se calculen los costos de consultas, vacunación y cirugía.
 
-   ![Diagrama de clases de PetCare](docs/capturas/captura 3.png)
+   ![Diagrama de clases de PetCare](docs/capturas/captura_3.png)
 
 4. Intentar agendar una cita que viole una regla de negocio y mostrar el mensaje de error.
    
-   ![Diagrama de clases de PetCare](docs/capturas/captura 4.png)
+   ![Diagrama de clases de PetCare](docs/capturas/captura_4.png)
 
 5. Listar mascotas llamando emitirSonido() para mostrar el polimorfismo.
 
-   ![Diagrama de clases de PetCare](docs/capturas/captura 5.png)
+   ![Diagrama de clases de PetCare](docs/capturas/captura_5.png)
 
 6. Mostrar el total cobrado y consultar historial clinico.
 
-   ![Diagrama de clases de PetCare](docs/capturas/captura 6.png)
+   ![Diagrama de clases de PetCare](docs/capturas/captura_6.png)
 
 
 ### Reflexión
