@@ -61,7 +61,7 @@
 ### Modelo de la Solución
 
 <!-- Inserta aquí la ruta real de tu imagen cuando la subas a GitHub -->
-![Diagrama de Clases UML](docs/diagrama-clases.png)
+![Diagrama de Clases UML](docs/diagramas/diagrama-clases.png)
 
 El sistema se diseñó siguiendo los principios de la Programación Orientada a Objetos para garantizar alta cohesión y bajo acoplamiento:
 * **Herencia:** Se aplicó en la clase abstracta `Persona`, de la cual heredan `Propietario`, `Veterinario` y `Recepcionista`, centralizando atributos compartidos. `Mascota` es la clase base para `Perro`, `Gato` y `AveExotica`.
