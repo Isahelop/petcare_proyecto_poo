@@ -31,7 +31,7 @@ public abstract class Mascota {
         }
         this.propietario = propietario;
         // Composicion con la clase de HistorialClinico
-        new HistorialClinico();
+        historialClinico = new HistorialClinico();
     }
 
     /**
