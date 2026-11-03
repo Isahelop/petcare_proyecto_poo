@@ -91,7 +91,6 @@ El sistema se diseñó siguiendo los principios de la Programación Orientada a 
 | 16 | Una mascota solo se agrega a su propio dueño | `Propietario.agregarMascota()` |
 | 17 | Al dar de baja una mascota se cancelan sus citas programadas, y se conservan las atendidas con sus comprobantes | `Clinica.darBajaMascota()` |
 
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 ---
 
@@ -185,3 +184,5 @@ Estudiante de Ingeniería de Software - Universidad Verazcruzana
 GitHub: @isahelop_
 
 Gracias por todo :)
+
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
