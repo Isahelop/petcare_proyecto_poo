@@ -67,6 +67,6 @@ public class Perro extends Mascota {
 
     @Override
     public void emitirSonido() {
-        System.out.println(getNombre() + "Sonido : Guaaoo");
+        System.out.println("Sonido : Guaaoo");
     }
 }
