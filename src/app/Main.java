@@ -107,7 +107,7 @@ public class Main {
         switch (tipoMasc) {
             case 1 -> {
                 System.out.print("Raza: "); String raza = scanner.nextLine().trim();
-                System.out.print("Nivel de energía (1-10): "); int energia = Integer.parseInt(scanner.nextLine().trim());
+                System.out.print("Nivel de energía: "); int energia = Integer.parseInt(scanner.nextLine().trim());
                 mascota = new Perro(nombreM, edad, peso,propietario, raza, energia);
             }
             case 2 -> {
